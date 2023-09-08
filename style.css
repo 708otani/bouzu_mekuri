@@ -1,0 +1,131 @@
+#header{
+font-size: 48;
+}
+
+#num_players{
+font-size: 48;
+}
+
+#reset{
+font-size: 48;
+}
+
+.playerbox {
+  width: 100%;
+  height: 225px;
+  border: 1px solid #333;
+}
+
+.numtext {
+  width: 15%;
+  height: 225px;
+  line-height: 225px;
+  float: left;
+  font-size: 72;
+  vertical-align: middle;
+  margin-left: 5%;
+}
+
+.playerfield {
+  width: 80%;
+  height: 225px;
+  float: left;
+}
+
+.card {
+  width: 150px; /* カードの幅を調整 */
+  height: 225px; /* カードの高さを調整 */
+  border: 1px solid #333;
+  text-align: center;
+  position: absolute;
+  transition: transform 0.5s ease;
+  overflow: hidden; /* コンテンツがはみ出ないように設定 */
+}
+
+.card.z {
+  background-color: darkgreen;
+}
+
+.card.t {
+  background-color: lightblue;
+}
+
+.card.td {
+  background: linear-gradient(45deg, lightblue 0%, lightblue 40%, white 45%, lightblue 50%, white 55%, lightblue 60%);
+}
+
+.card.h {
+  background-color: lightpink;
+}
+
+.card.hd {
+  background: linear-gradient(45deg, lightpink 0%, lightpink 40%, white 45%, lightpink 50%, white 55%, lightpink 60%);
+}
+
+.card.b {
+  background-color: lightgray;
+}
+
+.card-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auth_poem {
+  text-align: right;
+}
+
+.author {
+  font-size: 14px;
+  writing-mode: vertical-lr;
+  white-space: nowrap;
+  margin: 3px;
+  float: right;
+}
+
+.poem {
+  font-size: 14px; /* 歌のフォントサイズを調整 */
+  writing-mode: vertical-rl; /* 縦書きに設定 */
+  white-space: nowrap; /* テキストが折り返されないように設定 */
+  transform: rotate(0deg); /* テキストの向きを調整 */
+  margin: 3px;
+  float: right;
+  text-align: left;
+}
+
+.illustration {
+  max-width: 100%; /* イラストがカード内に収まるように */
+  max-height: 60%; /* イラストがカード内に収まるように */
+}
+
+.small-number {
+  font-size: 9px; /* 小さい数字のフォントサイズを調整 */
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+
+.numtext.first {
+	font-weight:bold;
+	color: transparent;
+	background: repeating-linear-gradient(0deg, #B67B03 0.1em, #DAAF08 0.2em, #DEC980 0.3em, #DAAF08 0.4em, #B67B03 0.5em); 
+	-webkit-background-clip: text;
+}
+
+.numtext.second {
+	font-weight:bold;
+	color: transparent;
+	background: repeating-linear-gradient(0deg, #888888 0.1em, #AAAAAA 0.2em, #BBBBBB 0.3em, #AAAAAA 0.4em, #888888 0.5em); 
+	-webkit-background-clip: text;
+}
+
+.numtext.third {
+	font-weight:bold;
+	color: transparent;
+	background: repeating-linear-gradient(0deg, #860303 0.1em, #9A0808 0.2em, #AE4040 0.3em, #9A0808 0.4em, #860303 0.5em); 
+	-webkit-background-clip: text;
+}
