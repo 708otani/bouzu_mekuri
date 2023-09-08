@@ -194,7 +194,7 @@ function do_gameset() {
 
 function refresh_player_fields() {
   n_card = playerfields[current_player].childElementCount;
-  space = (playerfields[current_player].clientWidth - 100) / (n_card - 0.99999);
+  space = (playerfields[current_player].clientWidth - 150) / (n_card - 0.99999);
   if (space > 10) { space = 10; }
   var cnt = 0;
   for (var child=playerfields[current_player].firstChild; child!==null; child=child.nextSibling) {
@@ -206,7 +206,7 @@ function refresh_player_fields() {
 
 function refresh_discarded() {
   n_card = discardedfield.childElementCount;
-  space = (discardedfield.clientWidth - 100) / (n_card - 0.99999);
+  space = (discardedfield.clientWidth - 150) / (n_card - 0.99999);
   if (space > 10) { space = 10; }
   var cnt = 0;
   for (var child=discardedfield.firstChild; child!==null; child=child.nextSibling) {
