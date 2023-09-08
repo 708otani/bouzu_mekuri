@@ -3,12 +3,13 @@
 <meta Charset="utf-8">
 <title>test</title>
 <link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
 </head>
-<body>
+<body onload="reset_game()">
 <div id="header">
 Number of player:
 <select id="num_players"><option>2</option><option>3</option><option>4</option><option>5</option></select>
-<button id="reset" onclick=reset_game()>Reset game</button>
+<button id="reset" onclick="reset_game()">Reset game</button>
 </div>
 <div>
 <div id="discarded" style="height: 225px; width: 100%">
@@ -17,6 +18,5 @@ width: 80%"></div>
 </div>
 <div id="cardContainer" style="height: 600px; width: 100%"></div>
 <div id="players"></div>
-<script src="script.js" onloaded=reset_game()></script>
 </body>
 </html>
