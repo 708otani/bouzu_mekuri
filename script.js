@@ -131,6 +131,40 @@ function removeAllChildNodes(parent) {
     }
 }
 
+var auto_interval = 1000
+
+function flip_one() {
+  n_card = cardContainer.childElementCount;
+  if (n_card == 0) {return 0;}
+  idx = -1;
+  zmax = -1;
+  for (let i=0; i<n_card; i++) {
+    card = cardContainer.children[i];
+    if (card.style.zIndex > zmax) {
+      idx = i;
+      zmax = card.style.zIndex;
+    }
+  }
+  card = cardContainer.children[idx];
+  card.dispatchEvent(new Event('click'));
+  return 1;
+
+}
+
+async function cpu_flip() {
+  while (true) {
+    console.log('aaa');
+    await new Promise(r =>
+        setTimeout(r, auto_interval));
+    if (current_player == 0) {
+      continue;
+    }
+    ret = flip_one();
+    console.log(ret);
+  }
+}
+cpu_flip();
+
 function changeTurn() {
 	playerbox[current_player].style.background = "#ffffff";
 	current_player = (current_player + 1) % num_player;
@@ -224,17 +258,26 @@ function reset_game() {
   playerfields.length = 0;
   playerbox.length = 0;
   discardedtext.innerHTML = 0;
-  discardedtext.className = 'numtext';
+  discardedtext.className 
   for (let i = 0; i < num_player; i++) {
 	playerbox.push(document.createElement('div'));
-	playerbox[i].className = 'playerbox';
-	playertexts.push(document.createElement('div'));
-	playertexts[i].className = 'numtext';
-	playertexts[i].innerHTML = 0;
+	 playerbox[i].className = 'playerbox';
+	 
+    tmp = document.createElement('div');
+    tmp.style.cssFloat = 'left';
+    tmp.style.width = '15%';
+    playername = document.createElement('div');
+    playername.innerHTML = (i == 0) ? 'You' : ('COM ' + i)
+playertexts.push(document.createElement('div'));
+	 playertexts[i].className = 'numtext';
+	 playertexts[i].innerHTML = 0;
     playerfields.push(document.createElement('div'));
     playerfields[i].className = 'playerfield';
     document.getElementById('players').appendChild(playerbox[i]);
-	playerbox[i].appendChild(playertexts[i]);
+	//playerbox[i].appendChild(playertexts[i]);
+   playerbox[i].appendChild(tmp);
+   tmp.appendChild(playername);
+   tmp.appendChild(playertexts[i]);
 	playerbox[i].appendChild(playerfields[i]);
   }
   current_player = Math.floor(Math.random() * num_player);
@@ -281,12 +324,15 @@ function reset_game() {
     card.className = 'card z';
 
   // set action
-    card.addEventListener("click", async function() {
+    card.addEventListener("click", async function(event) {
+      if (event.isTrusted && current_player != 0) {
+        return -1;
+      }
       this.className = 'card ' + cardInfo[i]["attribute"];
       content.style.display = 'block';
 	  this.addEventListener("click", function() {});
 	  this.style.zIndex = 1000000;
-      await new Promise(r => setTimeout(r, 500));
+      await new Promise(r => setTimeout(r, Math.min(500, auto_interval)));
 	  do_action(card, i);
     });
 
